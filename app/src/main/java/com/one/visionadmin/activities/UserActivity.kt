@@ -4,11 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.one.vision.models.Cast
-import com.one.vision.models.Episode
-import com.one.vision.models.Season
+import com.one.visionadmin.models.Cast
+import com.one.visionadmin.models.Episode
+import com.one.visionadmin.models.Season
 import com.one.visionadmin.R
-import com.one.visionadmin.adapters.MoviesAdapter
 import com.one.visionadmin.adapters.WatchListAdapter
 import com.one.visionadmin.databinding.ActivityUserBinding
 import com.one.visionadmin.itemdecoration.UserWatchListDecoration
@@ -35,6 +34,7 @@ class UserActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         init()
+        onClick()
         getUserData()
         getWatchListData()
     }
@@ -228,7 +228,6 @@ class UserActivity : AppCompatActivity() {
                     "0001",
                     "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
                     "Aftermath",
-                    "movie",
                     "4.5",
                     "2014",
                     "2h 30m",
@@ -246,7 +245,6 @@ class UserActivity : AppCompatActivity() {
                     "0001",
                     "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
                     "Aftermath",
-                    "movie",
                     "4.5",
                     "2014",
                     "2h 30m",
@@ -264,7 +262,6 @@ class UserActivity : AppCompatActivity() {
                     "0001",
                     "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
                     "Aftermath",
-                    "series",
                     "4.5",
                     "2014",
                     "2h 30m",
@@ -282,7 +279,6 @@ class UserActivity : AppCompatActivity() {
                     "0001",
                     "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
                     "Aftermath",
-                    "series",
                     "4.5",
                     "2014",
                     "2h 30m",
@@ -306,6 +302,12 @@ class UserActivity : AppCompatActivity() {
             addItemDecoration(userWatchListDecoration)
             adapter = watchListAdapter
             layoutManager = LinearLayoutManager(this@UserActivity, LinearLayoutManager.HORIZONTAL, false)
+        }
+    }
+
+    private fun onClick(){
+        binding.userBackButton.setOnClickListener {
+            onBackPressed()
         }
     }
 

@@ -13,14 +13,22 @@
     <color name="text_title">#FFFFFF</color>
     <color name="text_subtitle">#E8E8E8</color>
 
-    <color name="chip_background_inactive">#282727</color>
-    <color name="chip_background_active">#CD000A</color>
-    <color name="chip_text_inactive">#7C7878</color>
-    <color name="chip_text_active">#ffffff</color>
+    <color name="categories_chip_background_inactive">#282727</color>
+    <color name="categories_chip_background_active">#CD000A</color>
+    <color name="categories_chip_text_inactive">#7C7878</color>
+    <color name="categories_chip_text_active">#ffffff</color>
+
+    <color name="prime_chip_background_inactive">#282727</color>
+    <color name="prime_chip_background_active">#ffffff</color>
+    <color name="prime_chip_text_inactive">#7C7878</color>
+    <color name="prime_chip_text_active">#000000</color>
 
     <color name="active_icon_tick">#00FF00</color>
     <color name="inactive_icon_tick">#ED5E5E5E</color>
     <color name="recharge_layout">#BD060E</color>
+
+    <color name="editext_active">#898989</color>
+    <color name="editext_inactive">#FFFFFF</color>
 
     <color name="logo">#F5F5F1</color>
 </resources>

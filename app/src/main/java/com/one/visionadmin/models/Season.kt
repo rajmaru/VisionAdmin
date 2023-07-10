@@ -1,4 +1,4 @@
-package com.one.vision.models
+package com.one.visionadmin.models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

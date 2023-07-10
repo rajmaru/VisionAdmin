@@ -25,10 +25,17 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
-    <!-- Filtered Chip -->
-    <style name="FilteredChip" parent="Widget.Material3.Chip.Filter.Elevated">
-        <item name="chipBackgroundColor">@color/chip_background</item>
-        <item name="android:textColor">@color/chip_text</item>
-        <item name="checkedIconTint">@color/chip_text</item>
+    <!-- Categories Chip -->
+    <style name="Theme.CategoriesChip" parent="Widget.Material3.Chip.Filter.Elevated">
+        <item name="chipBackgroundColor">@color/categories_chip_background</item>
+        <item name="android:textColor">@color/categories_chip_text</item>
+        <item name="checkedIconTint">@color/categories_chip_text</item>
+    </style>
+
+    <!-- Prime Chip -->
+    <style name="Theme.PrimeChip" parent="Widget.Material3.Chip.Filter.Elevated">
+        <item name="chipBackgroundColor">@color/prime_chip_background</item>
+        <item name="android:textColor">@color/prime_chip_text</item>
+        <item name="checkedIconTint">@color/prime_chip_text</item>
     </style>
 </resources>

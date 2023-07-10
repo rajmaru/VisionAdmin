@@ -32,7 +32,11 @@ class MoviesAdapter: RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
             .into(holder.binding.moviePosterImg)
         holder.binding.movieTitleTv.text = movie.title
         holder.binding.movieSubtitleTv.text = "${movie.year} • ${movie.duration}"
-        holder.binding.movieTypeTv.text = movie.type?.capitalize()
+        if(movie.seasonsList != null){
+            holder.binding.movieTypeTv.text = "Series"
+        }else{
+            holder.binding.movieTypeTv.text = "Movie"
+        }
         holder.binding.movieDescTv.text = movie.description
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(movie)

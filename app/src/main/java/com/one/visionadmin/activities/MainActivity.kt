@@ -8,9 +8,9 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.forEach
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
-import com.one.vision.models.Cast
-import com.one.vision.models.Episode
-import com.one.vision.models.Season
+import com.one.visionadmin.models.Cast
+import com.one.visionadmin.models.Episode
+import com.one.visionadmin.models.Season
 import com.one.visionadmin.R
 import com.one.visionadmin.adapters.MoviesAdapter
 import com.one.visionadmin.adapters.UsersAdapter
@@ -223,7 +223,6 @@ class MainActivity : AppCompatActivity() {
                     "0001",
                     "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
                     "Aftermath",
-                    "movie",
                     "4.5",
                     "2014",
                     "2h 30m",
@@ -241,7 +240,6 @@ class MainActivity : AppCompatActivity() {
                     "0001",
                     "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
                     "Aftermath",
-                    "movie",
                     "4.5",
                     "2014",
                     "2h 30m",
@@ -259,7 +257,6 @@ class MainActivity : AppCompatActivity() {
                     "0001",
                     "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
                     "Aftermath",
-                    "series",
                     "4.5",
                     "2014",
                     "2h 30m",
@@ -277,7 +274,6 @@ class MainActivity : AppCompatActivity() {
                     "0001",
                     "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
                     "Aftermath",
-                    "series",
                     "4.5",
                     "2014",
                     "2h 30m",

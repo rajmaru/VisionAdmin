@@ -1,8 +1,6 @@
 package com.one.visionadmin.models
 
 import android.os.Parcelable
-import com.one.vision.models.Cast
-import com.one.vision.models.Season
 import kotlinx.android.parcel.Parcelize
 
 
@@ -11,7 +9,6 @@ data class Movie(
     val id: String?,
     val image: String?,
     val title: String?,
-    val type: String?,
     val rating: String?,
     val year: String?,
     val duration : String?,
