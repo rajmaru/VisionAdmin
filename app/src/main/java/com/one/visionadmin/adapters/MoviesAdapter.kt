@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.one.visionadmin.databinding.MovieItemBinding
 import com.one.visionadmin.models.Movie
 
-class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MoviesAdapter: RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
     private lateinit var moviesList: ArrayList<Movie>
     private lateinit var context: Context

@@ -13,5 +13,14 @@
     <color name="text_title">#000000</color>
     <color name="text_subtitle">#181818</color>
 
+    <color name="chip_background_inactive">#ABABAB</color>
+    <color name="chip_background_active">#CD000A</color>
+    <color name="chip_text_inactive">#A09C9C</color>
+    <color name="chip_text_active">#ffffff</color>
+
+    <color name="active_icon_tick">#1CBC1C</color>
+    <color name="inactive_icon_tick">#DADADA</color>
+    <color name="recharge_layout">#DE040F</color>
+
     <color name="logo">#FF000000</color>
 </resources>

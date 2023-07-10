@@ -1,80 +1,85 @@
 package com.one.visionadmin.activities
 
-import android.content.Intent
-import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.view.forEach
+import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.chip.Chip
+import com.bumptech.glide.Glide
 import com.one.vision.models.Cast
 import com.one.vision.models.Episode
 import com.one.vision.models.Season
 import com.one.visionadmin.R
 import com.one.visionadmin.adapters.MoviesAdapter
-import com.one.visionadmin.adapters.UsersAdapter
-import com.one.visionadmin.databinding.ActivityMainBinding
+import com.one.visionadmin.adapters.WatchListAdapter
+import com.one.visionadmin.databinding.ActivityUserBinding
+import com.one.visionadmin.itemdecoration.UserWatchListDecoration
 import com.one.visionadmin.models.Movie
 import com.one.visionadmin.models.User
 
-class MainActivity : AppCompatActivity() {
+class UserActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var moviesAdapter: MoviesAdapter
-    private lateinit var usersAdapter: UsersAdapter
+    private lateinit var binding: ActivityUserBinding
+    private lateinit var user: User
+    private lateinit var watchListAdapter: WatchListAdapter
+    private lateinit var userWatchListDecoration: UserWatchListDecoration
 
     private var moviesList = ArrayList<Movie>()
-    private var usersList = ArrayList<User>()
     private var movieTagsList = ArrayList<String>()
     private var movieLanguagesList = ArrayList<String>()
     private var movieCastsList = ArrayList<Cast>()
     private var movieSeasonsList = ArrayList<Season>()
     private var movieEpisodesList = ArrayList<Episode>()
-    private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        installSplashScreen()
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         init()
-        getMovieData()
         getUserData()
-        changeRVData("Users")
-        setHomeRV()
-        onClick()
+        getWatchListData()
     }
 
-    private fun init() {
-        moviesAdapter = MoviesAdapter()
-        usersAdapter = UsersAdapter()
+    private fun init(){
+        watchListAdapter = WatchListAdapter()
+        userWatchListDecoration = UserWatchListDecoration()
     }
 
-    private fun onClick() {
-        moviesAdapter.onItemClick = { movie ->
-            val intent = Intent(this@MainActivity, MovieActivity::class.java)
-            intent.putExtra("MOVIE", movie)
-            startActivity(intent)
-            inAnimation()
-        }
+    private fun getUserData() {
+        user = intent.getParcelableExtra("USER")!!
+        setUserData()
+    }
 
-        usersAdapter.onItemClick = { user ->
-            val intent = Intent(this@MainActivity, UserActivity::class.java)
-            intent.putExtra("USER", user)
-            startActivity(intent)
-            inAnimation()
-        }
+    private fun setUserData() {
+        Glide.with(this)
+            .load(user.img)
+            .into(binding.userProfilePic)
+        binding.userNameTv.text = user.name
+        binding.userEmailTv.text = user.email
+        setPlanDetails(user.plan!!)
+    }
 
-        binding.homeChipGroup.forEach { child ->
-            (child as? Chip)?.setOnCheckedChangeListener { _, _ ->
-                changeRVData(child.text as String)
-            }
+    private fun setPlanDetails(plan: String) {
+        if (plan == "Free") {
+            binding.userCurrentPlanTv.text = plan
+            binding.userFreeMoviesTick.setColorFilter(this.resources.getColor(R.color.active_icon_tick))
+        }
+        if (plan == "Monthly") {
+            binding.userCurrentPlanTv.text = plan
+            binding.userFreeMoviesTick.setColorFilter(this.resources.getColor(R.color.active_icon_tick))
+            binding.userLiveTvTick.setColorFilter(this.resources.getColor(R.color.active_icon_tick))
+            binding.userPrimeMoviesTick.setColorFilter(this.resources.getColor(R.color.active_icon_tick))
+        }
+        if (plan == "Yearly") {
+            binding.userCurrentPlanTv.text = plan
+            binding.userFreeMoviesTick.setColorFilter(this.resources.getColor(R.color.active_icon_tick))
+            binding.userLiveTvTick.setColorFilter(this.resources.getColor(R.color.active_icon_tick))
+            binding.userPrimeMoviesTick.setColorFilter(this.resources.getColor(R.color.active_icon_tick))
+            binding.userRequestMoviesTick.setColorFilter(this.resources.getColor(R.color.active_icon_tick))
+
         }
     }
 
-    private fun getMovieData() {
+    private fun getWatchListData() {
         //Dummy Movie Data
         movieTagsList.apply {
             add("Comedy")
@@ -292,50 +297,23 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        moviesAdapter.setMovieList(this, moviesList)
+        setWatchListdata()
     }
 
-    private fun getUserData() {
-        user = User(
-            "Raj Maru",
-            "https://lh3.googleusercontent.com/a/AAcHTtd12_FfREgn07fQcUqCoyxij8IblTITeatLNYb1qnWNbw=s288-c-no",
-            "rajmaru0304@gmail.com",
-            "Yearly",
-            moviesList
-        )
-
-        usersList.apply {
-            add(user)
-            add(user)
-            add(user)
-            add(user)
-            add(user)
-            add(user)
-        }
-
-        usersAdapter.setUserList(this, usersList)
-    }
-
-
-    private fun changeRVData(id: String) {
-        Log.d("RAJ", id)
-        if (id == "Users") {
-            binding.homeRv.adapter = usersAdapter
-        }
-        if (id == "Movies / Series") {
-            binding.homeRv.adapter = moviesAdapter
+    private fun setWatchListdata(){
+        watchListAdapter.setMovieList(this, moviesList)
+        binding.userWatchlistRv.apply {
+            addItemDecoration(userWatchListDecoration)
+            adapter = watchListAdapter
+            layoutManager = LinearLayoutManager(this@UserActivity, LinearLayoutManager.HORIZONTAL, false)
         }
     }
 
-    private fun setHomeRV() {
-        binding.homeRv.layoutManager =
-            LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
-    }
-
-    private fun inAnimation() {
+    override fun onBackPressed() {
+        super.onBackPressed()
         overridePendingTransition(
-            R.anim.slide_in_right,
-            R.anim.slide_out_left
+            R.anim.slide_in_left,
+            R.anim.slide_out_right
         )
     }
 }

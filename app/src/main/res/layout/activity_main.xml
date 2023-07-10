@@ -20,8 +20,8 @@
 
     <ImageView
         android:id="@+id/home_add"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/home_vision_logo"
@@ -32,8 +32,8 @@
 
     <ImageView
         android:id="@+id/home_search"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/home_add"
         app:layout_constraintEnd_toStartOf="@+id/home_add"
@@ -41,16 +41,50 @@
         app:srcCompat="@drawable/ic_search"
         app:tint="@color/logo" />
 
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/home_chip_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:chipSpacingHorizontal="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_vision_logo"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/home_users_chip"
+            style="@style/FilteredChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Users"
+            android:textSize="14sp"
+            app:checkedIcon="@null"
+            app:checkedIconVisible="false" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/home_movies_chip"
+            style="@style/FilteredChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Movies / Series"
+            android:textSize="14sp"
+            app:checkedIcon="@null"
+            app:checkedIconVisible="false" />
+    </com.google.android.material.chip.ChipGroup>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/home_movie_rv"
+        android:id="@+id/home_rv"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_vision_logo" />
+        app:layout_constraintTop_toBottomOf="@+id/home_chip_group" />
 </androidx.constraintlayout.widget.ConstraintLayout>
